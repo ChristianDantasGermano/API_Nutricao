@@ -25,11 +25,10 @@ public class Alimentos implements Serializable{
 	@Column()
 	@Getter @Setter private String nome;
 	
-	@OneToOne(orphanRemoval = false,cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-	@JoinColumn(name = "idGrupoAlimentos")
-	@Getter @Setter private GrupoAlimentos grupoAlimentos;
+	@Column()
+	@Getter @Setter private String grupoAlimentos;
 	
 	@OneToOne(orphanRemoval = true,cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-	@JoinColumn(name = "idTabelaNutricional")
+	@JoinColumn(name = "idNutricional")
 	@Getter @Setter private TabelaNutricional tabelaNutricional;
 }

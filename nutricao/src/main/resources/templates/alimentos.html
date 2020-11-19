@@ -18,26 +18,133 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
 	crossorigin="anonymous"></script>
-
+<style>
+.submit {
+	display: flex;
+	width: 15%;
+	align-items: left;
+	justify-content: center;
+	margin: 0.5%;
+}
+</style>
 <title>Alimentos</title>
 </head>
 <body>
 	<div th:replace="fragments/header :: menu"></div>
-
-	<div class="card text-center">
-		<div class="card-header">
-			<ul class="nav nav-tabs card-header-tabs">
-				<li class="nav-item"><a class="nav-link active" href="#">Active</a>
-				</li>
-				<li class="nav-item"><a class="nav-link" href="#">Link</a></li>
-			</ul>
-		</div>
-		<div class="card-body">
-			<h5 class="card-title">Special title treatment</h5>
-			<p class="card-text">With supporting text below as a natural
-				lead-in to additional content.</p>
-			<a href="#" class="btn btn-primary">Go somewhere</a>
+	<div class="container-fluid">
+		<div class="card text-center">
+			<div class="card-header">
+				<ul class="nav nav-tabs card-header-tabs">
+					<li class="nav-item"><a class="nav-link active" id="home-tab"
+						data-toggle="tab" href="#home" role="tab" aria-controls="home"
+						aria-selected="true"> Alimentos</a></li>
+					<li class="nav-item"><a class="nav-link" id="profile-tab"
+						data-toggle="tab" href="#profile" role="tab"
+						aria-controls="profile" aria-selected="false"> Cadastro</a></li>
+					<li class="nav-item"><a class="nav-link" id="contact-tab"
+						data-toggle="tab" href="#contact" role="tab"
+						aria-controls="contact" aria-selected="false"> Grupos
+							Alimentais</a></li>
+				</ul>
+			</div>
+			<div class="tab-content" id="myTabContent">
+				<div class="tab-pane fade show active" id="home" role="tabpanel"
+					aria-labelledby="home-tab">
+					<div class="card-body">
+						<h5 class="card-title">Alimentos</h5>
+						<p class="card-text">With supporting text below as a natural
+							lead-in to additional content.</p>
+						<a href="#" class="btn btn-primary">Go somewhere</a>
+					</div>
+				</div>
+				<div class="tab-pane fade" id="profile" role="tabpanel"
+					aria-labelledby="profile-tab">
+					<form>
+						<div class="form-row">
+							<div class="col-sm-6">
+								<div class="card-body">
+									<h5 class="card-title">Alimento</h5>
+									<div class="form-group">
+										<input name="nome" type="text" class="form-control"
+											placeholder="Nome do alimento">
+									</div>
+									<div class="form-group">
+										<select class="form-control" id="exampleFormControlSelect1"
+											name="grupoAlimentar">
+											<option>Grupo Alimentar 1</option>
+											<option>Grupo Alimentar 2</option>
+											<option>Grupo Alimentar 3</option>
+											<option>Grupo Alimentar 4</option>
+											<option>Grupo Alimentar 5</option>
+										</select>
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-6">
+								<div class="card-body">
+									<h5 class="card-title">Tabela Nutricional</h5>
+									<div class="form-group">
+										<input name="valorEnergetico" type="text" class="form-control"
+											placeholder="Valor Energético">
+									</div>
+									<div class="form-group">
+										<input name="carboidratos" type="text" class="form-control"
+											placeholder="Carboidratos">
+									</div>
+									<div class="form-group">
+										<input name="proteinas" type="text" class="form-control"
+											placeholder="Proteínas">
+									</div>
+									<div class="form-group">
+										<input name="gordurasSaturadas" type="text"
+											class="form-control" placeholder="Gorduras Saturadas">
+									</div>
+									<div class="form-group">
+										<input name="gordurasTrans" type="text" class="form-control"
+											placeholder="Gorduras Trans">
+									</div>
+									<div class="form-group">
+										<input name="fibraAlimentar" type="text" class="form-control"
+											placeholder="Fibra Alimentar">
+									</div>
+									<div class="form-group">
+										<input name="sodio" type="text" class="form-control"
+											placeholder="Sódio">
+									</div>
+									<div class="form-group">
+										<div class="input-group">
+											<input type="text" aria-label="Mineral"
+												class="form-control" placeholder="Mineral"> 
+												<input type="text"
+												aria-label="Quantidade" class="form-control" placeholder="Quantidade de minerais">
+										</div>
+									</div>
+									<div class="form-group">
+										<div class="input-group">
+											<input type="text" aria-label="Mineral"
+												class="form-control" placeholder="Vitamina"> 
+												<input type="text"
+												aria-label="Quantidade" class="form-control" placeholder="Quantidade de vitaminas">
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<button type="submit" class="btn btn-primary submit">Cadastrar</button>
+					</form>
+				</div>
+				<div class="tab-pane fade" id="contact" role="tabpanel"
+					aria-labelledby="contact-tab">
+					<div class="card-body">
+						<h5 class="card-title">Grupos</h5>
+						<p class="card-text">With supporting text below as a natural
+							lead-in to additional content.</p>
+						<a href="#" class="btn btn-primary">Go somewhere</a>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
+
 </body>
 </html>
