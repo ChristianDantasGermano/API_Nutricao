@@ -3,8 +3,6 @@ package br.com.api.nutricao.modelo.alimentos;
 import java.io.Serializable;
 import java.util.Map;
 
-import javax.persistence.CascadeType;
-import javax.persistence.CollectionTable;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
