@@ -1,5 +1,9 @@
 package br.com.api.nutricao.repository;
 
-public interface AlimentosRepository {
+import org.springframework.data.repository.CrudRepository;
+
+import br.com.api.nutricao.modelo.alimentos.Alimentos;
+
+public interface AlimentosRepository extends CrudRepository<Alimentos,String>{
 
 }

@@ -1,5 +1,8 @@
+
+/*
 package br.com.api.nutricao.modelo.receitas;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -15,15 +18,15 @@ import lombok.Setter;
 
 @SuppressWarnings("serial")
 @Entity
-public class Receitas {
+public class Receitas implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Getter private long id;
 	
-	@Column
 	@Getter @Setter protected String nome;
 	@Getter @Setter private Map<Alimentos, Integer> ingredientes = new HashMap<Alimentos, Integer>();
 	@Getter @Setter protected String ComoPreparar;
 	@Getter @Setter protected double TempoPreparo;
 	@Getter @Setter protected String Observacao;	
 }
+*/

@@ -1,5 +1,9 @@
 package br.com.api.nutricao.repository;
 
-public interface TabelaNutricionalRepository {
+import org.springframework.data.repository.CrudRepository;
+
+import br.com.api.nutricao.modelo.alimentos.TabelaNutricional;
+
+public interface TabelaNutricionalRepository extends CrudRepository<TabelaNutricional,String>{
 
 }

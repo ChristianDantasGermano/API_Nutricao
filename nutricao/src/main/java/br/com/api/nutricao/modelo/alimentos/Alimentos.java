@@ -1,12 +1,35 @@
 package br.com.api.nutricao.modelo.alimentos;
 
-import lombok.AllArgsConstructor;
+import java.io.Serializable;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+
 import lombok.Getter;
 import lombok.Setter;
 
-@AllArgsConstructor @Getter @Setter
-public class Alimentos {
-	private String nome;
-	private GrupoAlimentos grupoAlimentos;
-	private TabelaNutricional tabelaNutricional;
+@SuppressWarnings("serial")
+@Entity 
+public class Alimentos implements Serializable{
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Getter private long id;
+	
+	@Column()
+	@Getter @Setter private String nome;
+	
+	@OneToOne(orphanRemoval = false,cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+	@JoinColumn(name = "idGrupoAlimentos")
+	@Getter @Setter private GrupoAlimentos grupoAlimentos;
+	
+	@OneToOne(orphanRemoval = true,cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+	@JoinColumn(name = "idTabelaNutricional")
+	@Getter @Setter private TabelaNutricional tabelaNutricional;
 }
