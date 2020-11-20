@@ -2,11 +2,11 @@
 <html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
 <head>
 <!-- Required meta tags -->
-<meta charset="utf-8">
 <link href="webjars/bootstrap/4.5.3/css/bootstrap.min.css"
 	rel="stylesheet">
 <script src="webjars/jquery/3.4.1/jquery.min.js"></script>
 <script src="webjars/bootstrap/4.5.3/js/bootstrap.min.js"></script>
+ <script type="text/javascript" src="/alimentos.js"></script>
 <style>
 .submit {
 	display: flex;
@@ -14,6 +14,14 @@
 	align-items: left;
 	justify-content: center;
 	margin: 0.5%;
+}
+.dynamicButtons {
+	display: flex;
+	height:5%;
+	margin: 1.2%;
+}
+.red{
+	color:red;
 }
 </style>
 <title>Alimentos</title>
@@ -27,9 +35,9 @@
 					<li class="nav-item"><a class="nav-link active" id="home-tab"
 						data-toggle="tab" href="#home" role="tab" aria-controls="home"
 						aria-selected="true"> Alimentos</a></li>
-					<li class="nav-item"><a class="nav-link" id="profile-tab"
+					<li class="nav-item "><a class="nav-link " id="profile-tab"
 						data-toggle="tab" href="#profile" role="tab"
-						aria-controls="profile" aria-selected="false"> Cadastro</a></li>
+						aria-controls="profile" aria-selected="false" > Cadastro</a></li>
 					<li class="nav-item"><a class="nav-link" id="contact-tab"
 						data-toggle="tab" href="#contact" role="tab"
 						aria-controls="contact" aria-selected="false"> Grupos
@@ -48,7 +56,8 @@
 				</div>
 				<div class="tab-pane fade" id="profile" role="tabpanel"
 					aria-labelledby="profile-tab">
-					<form>
+					
+					<form action="addalimento" method="post" modelAttribute="alimentoForm">
 						<div class="form-row">
 							<div class="col-sm-6">
 								<div class="card-body">
@@ -59,7 +68,7 @@
 									</div>
 									<div class="form-group">
 										<select class="form-control" id="exampleFormControlSelect1"
-											name="grupoAlimentar">
+											name="grupoAlimentos">
 											<option>Grupo Alimentar 1</option>
 											<option>Grupo Alimentar 2</option>
 											<option>Grupo Alimentar 3</option>
@@ -73,47 +82,49 @@
 								<div class="card-body">
 									<h5 class="card-title">Tabela Nutricional</h5>
 									<div class="form-group">
-										<input name="valorEnergetico" type="text" class="form-control"
-											placeholder="Valor EnergÃ©tico">
+										<input name="valorEnergetico" type="number" class="form-control"
+											placeholder="Valor Energético">
 									</div>
 									<div class="form-group">
-										<input name="carboidratos" type="text" class="form-control"
+										<input name="carboidratos" type="number" class="form-control"
 											placeholder="Carboidratos">
 									</div>
 									<div class="form-group">
-										<input name="proteinas" type="text" class="form-control"
-											placeholder="ProteÃ­nas">
+										<input name="proteinas" type="number" class="form-control"
+											placeholder="Proteínas">
 									</div>
 									<div class="form-group">
-										<input name="gordurasSaturadas" type="text"
+										<input name="gordurasSaturadas" type="number"
 											class="form-control" placeholder="Gorduras Saturadas">
 									</div>
 									<div class="form-group">
-										<input name="gordurasTrans" type="text" class="form-control"
+										<input name="gordurasTrans" type="number" class="form-control"
 											placeholder="Gorduras Trans">
 									</div>
 									<div class="form-group">
-										<input name="fibraAlimentar" type="text" class="form-control"
+										<input name="fibraAlimentar" type="number" class="form-control"
 											placeholder="Fibra Alimentar">
 									</div>
 									<div class="form-group">
-										<input name="sodio" type="text" class="form-control"
-											placeholder="SÃ³dio">
+										<input name="sodio" type="number" class="form-control"
+											placeholder="Sódio">
 									</div>
-									<div class="form-group">
+									<div class="form-group" id="input_minerais">
 										<div class="input-group">
-											<input type="text" aria-label="Mineral"
+											<input name="minerios[0].nomeMinerio" type="text" aria-label="Mineral"
 												class="form-control" placeholder="Mineral"> 
-												<input type="text"
+												<input name="minerios[0].quantidade" type="number" 
 												aria-label="Quantidade" class="form-control" placeholder="Quantidade de minerais">
+												<a id="add_minerais_button" href="#" class="dynamicButtons"><h5>+</h5></a>
 										</div>
 									</div>
-									<div class="form-group">
+									<div class="form-group" id="input_vitamina">
 										<div class="input-group">
-											<input type="text" aria-label="Mineral"
+											<input name="vitaminas[0].nomeVitamina"  type="text" aria-label="Mineral"
 												class="form-control" placeholder="Vitamina"> 
-												<input type="text"
+												<input name="vitaminas[0].quantidade"  type="number"
 												aria-label="Quantidade" class="form-control" placeholder="Quantidade de vitaminas">
+												<a id="add_vitamina_button" href="#" class="dynamicButtons"><h5>+</h5></a>
 										</div>
 									</div>
 								</div>
@@ -134,6 +145,5 @@
 			</div>
 		</div>
 	</div>
-
 </body>
 </html>

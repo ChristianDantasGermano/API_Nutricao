@@ -8,19 +8,20 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @SuppressWarnings("serial")
-@Entity
-public class GrupoAlimentos implements Serializable{
+@Entity  @AllArgsConstructor @NoArgsConstructor
+public class Minerais implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Getter private long id;
 	
 	@Column()
-	@Getter @Setter private String nome;
-	
+	@Getter @Setter private String nomeMinerio;
 	@Column()
-	@Getter @Setter private String descricao;
+	@Getter @Setter private Double quantidade;
 }
