@@ -1,0 +1,68 @@
+.submit {
+	display: flex;
+	margin: 0.5% 2% 2% 2%;
+}
+
+.dynamicButtons {
+	display: flex;
+	margin: 0.5% 0.5% 0.5% 0.5%;
+}
+
+.tabela {
+	display: flex;
+	align-items: center;
+	margin: 4%;
+}
+
+.cadAlimentos {
+	display: flex;
+	align-items: center;
+	margin: 3% 20% 2% 20%;
+}
+
+.nutricao {
+	margin-left: 1%;
+}
+
+.alinha {
+	padding-left: 2%;
+	padding-right: 2%;
+	text-align: left;
+	padding-right: 2%;
+}
+
+.titulo {
+	margin-bottom: 2%;
+}
+
+.red {
+	color: red;
+}
+
+.primeiro {
+	margin-top: 31px;
+}
+
+.segundo {
+	margin-top: 37px;
+}
+
+.grupo1, .grupo2, .grupo3, .grupo4, .grupo5{
+	display: flex;
+}
+
+.grupo1{
+	margin: 8% 0 0 5%;
+}
+.grupo2{
+	margin: 8% 5% 0 0;
+}
+.grupo3{
+	margin: 4% 0 0 5%;
+}
+.grupo4{
+	margin: 4% 5% 0 0;
+}
+.grupo5{
+	margin: 4% 0 5% 5%;
+}
