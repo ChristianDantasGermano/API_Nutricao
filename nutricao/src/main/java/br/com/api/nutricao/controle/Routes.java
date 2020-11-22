@@ -18,5 +18,13 @@ public class Routes {
 		return "alimentos";
 	}
 	
+	//Página Cálculos
+	@RequestMapping("/calculos")
+	public String Calculos() {
+		return "calculos";
+	}
+	
+	
+	
 }
 
