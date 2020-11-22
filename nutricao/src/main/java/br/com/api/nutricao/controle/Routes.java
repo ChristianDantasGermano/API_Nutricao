@@ -45,5 +45,11 @@ public class Routes {
 		return mv;
 	}
 	
+	@RequestMapping("/receitas")
+	public String Receitas() {
+		return "receitas";
+	}
+	
+	
 }
 
