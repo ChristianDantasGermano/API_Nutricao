@@ -18,5 +18,11 @@ public class Routes {
 		return "alimentos";
 	}
 	
+	@RequestMapping("/receitas")
+	public String Receitas() {
+		return "receitas";
+	}
+	
+	
 }
 

@@ -1,18 +1,20 @@
 
-/*
 package br.com.api.nutricao.modelo.receitas;
 
 import java.io.Serializable;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 
-import br.com.api.nutricao.modelo.alimentos.Alimentos;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -23,10 +25,17 @@ public class Receitas implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Getter private long id;
 	
+	@Column()
 	@Getter @Setter protected String nome;
-	@Getter @Setter private Map<Alimentos, Integer> ingredientes = new HashMap<Alimentos, Integer>();
+	@Column()
 	@Getter @Setter protected String ComoPreparar;
-	@Getter @Setter protected double TempoPreparo;
-	@Getter @Setter protected String Observacao;	
+	@Column()
+	@Getter @Setter protected double TempoPreparo;	
+	
+	@OneToMany(orphanRemoval = true,cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+	@JoinColumn(name = "Ingredientes")
+	@Getter @Setter private List<Ingrediente> ingredientes = new ArrayList<Ingrediente>();
+	
+	
 }
-*/
+
