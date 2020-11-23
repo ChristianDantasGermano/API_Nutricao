@@ -19,13 +19,14 @@ public class ControleReceitas {
 	public String cadastrar(@ModelAttribute("receitasForm") ReceitasContainer container,
 			Receitas receita) {
 		System.out.println(container);
-		
-		
-		
-		
-		
+			
 		//receitas.save(at);
 		return "redirect:/receitas";
+	}
+	
+	@RequestMapping("/receitas")
+	public String Receitas() {
+		return "receitas";
 	}
 
 }
