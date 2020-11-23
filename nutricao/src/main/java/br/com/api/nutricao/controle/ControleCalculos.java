@@ -10,11 +10,11 @@ import br.com.api.nutricao.repository.CalculosRepository;
 @Controller
 public class ControleCalculos {
 	
-	private CalculosRepository calr;
+	private CalculosRepository calr = new CalculosRepository();
 	
-	@RequestMapping(value = "/calculo", method = RequestMethod.POST)
-	public String calculo(IMC peso, IMC altura, IMC valor) {
-		calr.salvarIMC(valor);
+	@RequestMapping(value = "calculo", method = RequestMethod.POST)
+	public String calculo(IMC obj) {
+		calr.salvarIMC(obj);
 		return "redirect:/calculos";
 	}
 

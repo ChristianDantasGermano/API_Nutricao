@@ -8,12 +8,13 @@ import lombok.Getter;
 import lombok.Setter;
 
 public class CalculosRepository {
-	private @Getter @Setter List<IMC> imc = new ArrayList<IMC>();
-	private IMC obj;
+	public IMC imc;
+	public double resultadoIMC;
 	
-	public void salvarIMC(IMC valor) {
-		obj.calcularIMC();
-		imc.add(obj);
-		System.out.println(imc);
+	public void salvarIMC(IMC obj) {
+		System.out.println("calr: " + obj);
+		resultadoIMC = obj.calcularIMC();
+		imc = obj;
+		System.out.println(resultadoIMC);
 	}
 }
