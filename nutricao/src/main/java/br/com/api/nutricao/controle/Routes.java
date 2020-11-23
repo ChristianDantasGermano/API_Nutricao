@@ -20,10 +20,6 @@ public class Routes {
 	@RequestMapping("/")
 	public String home() {
 		return "home";
-	}
-	
-	//
-	
-	
+	}	
 }
 
