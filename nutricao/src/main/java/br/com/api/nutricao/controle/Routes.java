@@ -8,13 +8,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.com.api.nutricao.modelo.alimentos.Alimentos;
+import br.com.api.nutricao.modelo.receitas.Receitas;
 import br.com.api.nutricao.repository.AlimentosRepository;
+import br.com.api.nutricao.repository.ReceitasRepository;
 
 @Controller
 public class Routes {
 	
 	@Autowired
 	private AlimentosRepository alimentos;
+	private ReceitasRepository receitas;
 	
 	//Página Home
 	@RequestMapping("/")
@@ -43,11 +46,6 @@ public class Routes {
 		mv.addObject("elementos",elementos);
 		mv.addObject("alimentos",alimento);
 		return mv;
-	}
-	
-	@RequestMapping("/receitas")
-	public String Receitas() {
-		return "receitas";
 	}
 	
 	
