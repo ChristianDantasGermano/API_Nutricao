@@ -13,7 +13,7 @@
 	<div th:replace="fragments/header :: menu"></div>
 	<div class="row">
 		<div class="col-sm-6">
-			<div class="card">
+			<div class="card" >
 				<div class="card-body">
 					<h5 class="card-title">Índice de Massa Corporal</h5>
 					<p class="card-text">Para calcular o seu IMC adicione seu peso e sua altura</p>
@@ -27,7 +27,7 @@
 						<div class="form-group">
 							<button type="submit" class="btn btn-primary btn-sm">Calcular</button>
 						</div>
-						<input class="form-control" type="text" placeholder="Resultado" >
+						<input class="form-control" type="text" th:placeholder="${resultadoIMC}" disabled>
 					</form>
 				</div>
 			</div>
@@ -36,18 +36,18 @@
 			<div class="card">
 				<div class="card-body">
 					<h5 class="card-title">Percentual de Gordura Corporal</h5>
-					<p class="card-text">Para calcular o seu IMG adicione sua idade e seu sexo</p>
-					<form>
+					<p class="card-text">Para calcular o seu IMG adicione sua idade e seu sexo (Masculino = 1 / Feminino = 0 )</p>
+					<form action="calculoImg" method="post">
 						<div class="form-group">
-							<input type="text" class="form-control" id="idade" placeholder="Idade">
+							<input name="idade" type="text" class="form-control" id="idade" placeholder="Idade">
 						</div>
 						<div class="form-group">
-							<input type="text" class="form-control" id="sexo" placeholder="Sexo">
+							<input name="sexo" type="text" class="form-control" id="sexo" placeholder="Sexo">
 						</div>
 						<div class="form-group">
-							<button type="button" class="btn btn-primary btn-sm" disabled>Calcular</button>
+							<button type="submit" class="btn btn-primary btn-sm">Calcular</button>
 						</div>
-						<input class="form-control" type="text" placeholder="Resultado" readonly>
+						<input class="form-control" type="text" th:placeholder="${resultadoIMG}" disabled>
 					</form>
 				</div>
 			</div>

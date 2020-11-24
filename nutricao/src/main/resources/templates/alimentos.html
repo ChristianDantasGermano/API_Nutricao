@@ -1,22 +1,17 @@
 <!doctype html>
 <html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
 <head>
-<!-- Required meta tags -->
 <meta charset="utf-8">
-<link href="webjars/bootstrap/4.5.3/css/bootstrap.min.css"
+<!-- Required meta tags -->
+<link
+	href="http://localhost:3100/webjars/bootstrap/4.5.3/css/bootstrap.min.css"
 	rel="stylesheet">
-<script src="webjars/jquery/3.4.1/jquery.min.js"></script>
-<script src="webjars/bootstrap/4.5.3/js/bootstrap.min.js"></script>
-<style>
-.submit {
-	display: flex;
-	width: 15%;
-	align-items: left;
-	justify-content: center;
-	margin: 0.5%;
-}
-</style>
-<title>Alimentos</title>
+<script src="http://localhost:3100/webjars/jquery/3.4.1/jquery.min.js"></script>
+<script
+	src="http://localhost:3100/webjars/bootstrap/4.5.3/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="http://localhost:3100/alimentos.js"></script>
+<link rel="stylesheet" href="http://localhost:3100/alimentos.css">
+<title>Nutricao</title>
 </head>
 <body>
 	<div th:replace="fragments/header :: menu"></div>
@@ -27,113 +22,29 @@
 					<li class="nav-item"><a class="nav-link active" id="home-tab"
 						data-toggle="tab" href="#home" role="tab" aria-controls="home"
 						aria-selected="true"> Alimentos</a></li>
-					<li class="nav-item"><a class="nav-link" id="profile-tab"
+					<li class="nav-item "><a class="nav-link " id="profile-tab"
 						data-toggle="tab" href="#profile" role="tab"
 						aria-controls="profile" aria-selected="false"> Cadastro</a></li>
 					<li class="nav-item"><a class="nav-link" id="contact-tab"
 						data-toggle="tab" href="#contact" role="tab"
-						aria-controls="contact" aria-selected="false"> Grupos
-							Alimentais</a></li>
+						aria-controls="contact" aria-selected="false"> Grupo dos alimentos</a></li>
 				</ul>
 			</div>
 			<div class="tab-content" id="myTabContent">
 				<div class="tab-pane fade show active" id="home" role="tabpanel"
 					aria-labelledby="home-tab">
-					<div class="card-body">
-						<h5 class="card-title">Alimentos</h5>
-						<p class="card-text">With supporting text below as a natural
-							lead-in to additional content.</p>
-						<a href="#" class="btn btn-primary">Go somewhere</a>
-					</div>
+					<div th:replace="fragments/consulta_alimentos :: consultaAlimentos"></div>
 				</div>
 				<div class="tab-pane fade" id="profile" role="tabpanel"
 					aria-labelledby="profile-tab">
-					<form>
-						<div class="form-row">
-							<div class="col-sm-6">
-								<div class="card-body">
-									<h5 class="card-title">Alimento</h5>
-									<div class="form-group">
-										<input name="nome" type="text" class="form-control"
-											placeholder="Nome do alimento">
-									</div>
-									<div class="form-group">
-										<select class="form-control" id="exampleFormControlSelect1"
-											name="grupoAlimentar">
-											<option>Grupo Alimentar 1</option>
-											<option>Grupo Alimentar 2</option>
-											<option>Grupo Alimentar 3</option>
-											<option>Grupo Alimentar 4</option>
-											<option>Grupo Alimentar 5</option>
-										</select>
-									</div>
-								</div>
-							</div>
-							<div class="col-sm-6">
-								<div class="card-body">
-									<h5 class="card-title">Tabela Nutricional</h5>
-									<div class="form-group">
-										<input name="valorEnergetico" type="text" class="form-control"
-											placeholder="Valor Energético">
-									</div>
-									<div class="form-group">
-										<input name="carboidratos" type="text" class="form-control"
-											placeholder="Carboidratos">
-									</div>
-									<div class="form-group">
-										<input name="proteinas" type="text" class="form-control"
-											placeholder="Proteínas">
-									</div>
-									<div class="form-group">
-										<input name="gordurasSaturadas" type="text"
-											class="form-control" placeholder="Gorduras Saturadas">
-									</div>
-									<div class="form-group">
-										<input name="gordurasTrans" type="text" class="form-control"
-											placeholder="Gorduras Trans">
-									</div>
-									<div class="form-group">
-										<input name="fibraAlimentar" type="text" class="form-control"
-											placeholder="Fibra Alimentar">
-									</div>
-									<div class="form-group">
-										<input name="sodio" type="text" class="form-control"
-											placeholder="Sódio">
-									</div>
-									<div class="form-group">
-										<div class="input-group">
-											<input type="text" aria-label="Mineral"
-												class="form-control" placeholder="Mineral"> 
-												<input type="text"
-												aria-label="Quantidade" class="form-control" placeholder="Quantidade de minerais">
-										</div>
-									</div>
-									<div class="form-group">
-										<div class="input-group">
-											<input type="text" aria-label="Mineral"
-												class="form-control" placeholder="Vitamina"> 
-												<input type="text"
-												aria-label="Quantidade" class="form-control" placeholder="Quantidade de vitaminas">
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<button type="submit" class="btn btn-primary submit">Cadastrar</button>
-					</form>
+					<div th:replace="fragments/cadastro_alimentos :: cadastroAlimentos"></div>
 				</div>
 				<div class="tab-pane fade" id="contact" role="tabpanel"
 					aria-labelledby="contact-tab">
-					<div class="card-body">
-						<h5 class="card-title">Grupos</h5>
-						<p class="card-text">With supporting text below as a natural
-							lead-in to additional content.</p>
-						<a href="#" class="btn btn-primary">Go somewhere</a>
-					</div>
+					<div th:replace="fragments/grupo_alimentar :: grupoAlimentar"></div>
 				</div>
 			</div>
 		</div>
 	</div>
-
 </body>
 </html>
