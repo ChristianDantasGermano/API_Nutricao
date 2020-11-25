@@ -1,17 +1,20 @@
 package br.com.api.nutricao.calculo;
 
+import java.io.Serializable;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.Setter;
 
 @AllArgsConstructor
-public class IMG {
-	protected IMC imc;
-	protected int idade;
-	protected int sexo;
-	@Getter protected double valor;
 
-	public double calcularIMG() {
-		this.valor = (1.20 * imc.getValor()) + (0.23 * idade) - (10.8 * sexo) - 5.4;
-		return valor;
+@SuppressWarnings("serial")
+
+public class IMG implements Serializable{
+	@Getter @Setter protected int idade;
+	@Getter @Setter protected int sexo;
+
+	public double calcularIMG(double imc) {
+		 return (1.20 * imc) + (0.23 * idade) - (10.8 * sexo) - 5.4;
 	}
 }
