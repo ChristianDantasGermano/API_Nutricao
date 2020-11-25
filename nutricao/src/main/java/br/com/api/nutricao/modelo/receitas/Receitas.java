@@ -30,12 +30,12 @@ public class Receitas implements Serializable{
 	@Column()
 	@Getter @Setter protected String ComoPreparar;
 	@Column()
-	@Getter @Setter protected double TempoPreparo;	
+	@Getter @Setter protected double TempoPreparo;
+
 	
 	@OneToMany(orphanRemoval = true,cascade = CascadeType.ALL,fetch = FetchType.LAZY)
 	@JoinColumn(name = "Ingredientes")
 	@Getter @Setter private List<Ingrediente> ingredientes = new ArrayList<Ingrediente>();
-	
 	
 }
 
