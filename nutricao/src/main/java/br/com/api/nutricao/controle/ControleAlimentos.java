@@ -45,7 +45,7 @@ public class ControleAlimentos {
 	@RequestMapping(value="/alimentos/{id}",method = RequestMethod.GET)
 	public ModelAndView ConsultarNutricao(@PathVariable long id) {
 		Iterable<Alimentos> elementos = alimentos.findAll();
-		Alimentos alimento = alimentos.findById(id);;
+		Alimentos alimento = alimentos.findById(id);
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("alimentos");
 		mv.addObject("elementos",elementos);

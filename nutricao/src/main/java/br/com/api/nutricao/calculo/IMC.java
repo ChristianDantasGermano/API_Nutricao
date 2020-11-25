@@ -1,16 +1,21 @@
 package br.com.api.nutricao.calculo;
 
+import java.io.Serializable;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.Setter;
 
 @AllArgsConstructor
-public class IMC {
-	protected double peso = 2;
-	protected double altura = 3;
-	@Getter protected double valor;
+
+@SuppressWarnings("serial")
+
+public class IMC implements Serializable{
+	@Getter @Setter protected double peso;
+	@Getter @Setter protected double altura;
 
 	public double calcularIMC() {
-		this.valor = peso / (altura * altura);
-		return valor;
+		return (peso / (altura * altura));
+		
 	}
 }

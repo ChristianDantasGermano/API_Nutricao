@@ -25,8 +25,5 @@ public class Routes {
 		return "home";
 	}
 	
-	//
-	
-	
 }
 
