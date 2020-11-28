@@ -10,6 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import br.com.api.nutricao.modelo.alimentos.Alimentos;
 import br.com.api.nutricao.modelo.container.ReceitasContainer;
+import br.com.api.nutricao.modelo.receitas.Ingrediente;
 import br.com.api.nutricao.modelo.receitas.Receitas;
 import br.com.api.nutricao.repository.AlimentosRepository;
 import br.com.api.nutricao.repository.ReceitasRepository;
@@ -24,20 +25,20 @@ public class ControleReceitas {
 	@RequestMapping(value="/addReceita",method = RequestMethod.POST)
 	public String cadastrar(@ModelAttribute("receitasForm") ReceitasContainer container,
 			Receitas receita) {
-		System.out.println(container);
+		System.out.println(container.getIngredientes());
 		receita.setIngredientes(container.getIngredientes());
-		//receitas.save(receita);
+		receitas.save(receita);
 		return "redirect:/receitas";
 	};
 	
 	@RequestMapping("/receitas")
 	public ModelAndView Receitas(){
 		Iterable<Receitas> elementosR = receitas.findAll();
-		//Receitas receita = receitas.findById(elementosR.iterator().next().getId());;
+		Receitas receita = receitas.findById(elementosR.iterator().next().getId());;
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("receitas");
-		//mv.addObject("receitasElemento",elementosR);
-		//mv.addObject("receita",receita);
+		mv.addObject("receitasElemento",elementosR);
+		mv.addObject("receita",receita);
 		Iterable<Alimentos> elementosA = alimentos.findAll();
 		mv.addObject("elementos",elementosA);
 		return mv;

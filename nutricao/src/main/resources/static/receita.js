@@ -9,10 +9,9 @@ $(document).ready(function() {
 		if (x < max_fields) { //max input box allowed
 			 //text box increment
 			
-			$(wrapper).append('<div class="input-group"> <select name = "ingredientes[+x+].nomeIngrediente"'+
-			' id="inputAlimento" class="form-control">'+
-			' <option th:each="elemento:${elementosA}" th:text="${elemento.nome}"></option></select>'+ 
-			'<input "ingredientes[+x+].quantidade"  type="number" aria-label="Last name"'+
+			$(wrapper).append('<div class="input-group"> <input name = "ingrediente['+x+'].nomeIngrediente" type="text"'+
+			' aria-label="Last name" class="form-control" placeholder="Alimento">'+ 
+			'<input name = "ingredientes['+x+'].quantidade"  type="number" aria-label="Last name"'+
 			' class="form-control"'+
 			' placeholder = "Quantidade"><button class="remove_field">X</button></div>'); //add input box
 			x++;

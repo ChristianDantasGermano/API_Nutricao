@@ -29,11 +29,84 @@
 		<div class="tab-content" id="myTabContent">
 			<div class="tab-pane fade show active" id="home" role="tabpanel"
 				aria-labelledby="home-tab">
+				<div class="form-row tabela" th:fragment="consultaReceitas">
+
+					<div class="col align-self-start">
+						<div class="card">
+							<div class="table-responsive">
+								<table class="table table-hover">
+									<thead>
+										<tr>
+											<th scope="col">Nome da Receita</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr th:each="elemento:${receitasElemento}">
+											<th th:text="${elemento.nome}" scope="row"></th>
+											<td><a class="btn btn-primary"
+												th:href="@{/receitas/{id}(id=${elemento.id})}" role="button">Mostrar</a></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+					<div class="col align-self-start">
+						<div class="card nutricao">
+							<h5 class="card-header titulo">Detalhes da Receita</h5>
+							<div class="row">
+								<div class="col-6">
+									<div class="form-group row alinha primeiro">
+										<label class="col-5" for="disabledTextInput">Como
+											preparar</label>
+										<div class="col-6">
+											<input type="text" id="disabledTextInput"
+												class="form-control"
+												th:placeholder="${receita.ComoPreparar}" disabled>
+										</div>
+									</div>
+									<div class="form-group row alinha">
+										<label class="col-5" for="disabledTextInput">TempoPreparo</label>
+										<div class="col-6">
+											<input type="number" id="disabledTextInput"
+												class="form-control"
+												th:placeholder="${receita.TempoPreparo}" disabled>
+										</div>
+									</div>
+									<div class="form-group row alinha">
+										<label class="col-5" for="disabledTextInput">Efeito
+											Especial</label>
+										<div class="col-6">
+											<input type="text" id="disabledTextInput"
+												class="form-control"
+												th:placeholder="${receitasElemento.efeitoEspecial}" disabled>
+										</div>
+									</div>
+
+								</div>
+								<div class="col-6">
+									<h5>Ingredientes</h5>
+									<div th:each="ingrediente:${receita.ingredientes}"
+										class="form-group row alinha">
+										<label class="col-3" th:text="${ingredientes.nomeIngrediente}"
+											for="disabledTextInput"></label>
+										<div class="col-9">
+											<input type="number" id="disabledTextInput"
+												class="form-control"
+												th:placeholder="${ingredientes.quantidade}" disabled>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
+			</div>
 
 			<div class="tab-pane fade" id="profile" role="tabpanel"
 				aria-labelledby="profile-tab">
-				<form action="/addReceita" method="post" modelAttribute="receitasForm">
+				<form action="/addReceita" method="post"
+					modelAttribute="receitasForm">
 					<div class="form-row">
 						<div class="col-sm-6">
 							<div class="card-body">
@@ -45,9 +118,12 @@
 								<h5 class="card-title">Ingredientes</h5>
 								<div class="form-group" id="ingredientes_form">
 									<div class="input-group">
-										<select name ="ingrediente[0].nomeIngrediente" id="seletorAlimento" class="form-control">
-											<option th:each="elemento:${elementos}" th:text="${elemento.nome}"></option>
-										</select> <input name = "ingrediente[0].quantidade" type="number" aria-label="Last name" class="form-control" placeholder="Quantidade">
+										<input name="ingrediente[0].nomeIngrediente" type="text"
+											aria-label="Last name" class="form-control"
+											placeholder="Alimento"> <input
+											name="ingrediente[0].quantidade" type="number"
+											aria-label="Last name" class="form-control"
+											placeholder="Quantidade">
 										<div class="input_fields_wrap" id="button_add">
 											<button class="add_field_button">+</button>
 										</div>
@@ -60,8 +136,8 @@
 								<h5 class="card-title">Preparo</h5>
 								<div class="input-group mb-3">
 
-									<input name = "TempoPreparo" type="number" class="form-control" placeholder="Tempo"
-										aria-label="Recipient's username"
+									<input name="TempoPreparo" type="number" class="form-control"
+										placeholder="Tempo" aria-label="Recipient's username"
 										aria-describedby="basic-addon2">
 									<div class="input-group-append">
 										<span class="input-group-text" id="basic-addon2">Minutos</span>
@@ -69,18 +145,18 @@
 								</div>
 								<div class="form-group">
 									<label for="exampleFormControlTextarea1">Modo de
-										Preparo</label>
-									<input name= "ComoPreparar" class="form-control" type = "text" id="exampleFormControlTextarea1"
-										placeholder="Detalhes sobre o preparo da receita" rows="6"></input>
+										Preparo</label> <input name="ComoPreparar" class="form-control"
+										type="text" id="exampleFormControlTextarea1"
+										placeholder="Detalhes sobre o preparo da receita">
 
 									<div class="custom-control custom-checkbox">
-										<input name = "EfeitoEspecial"
-										value = "null" type="checkbox" class="custom-control-input"
-											id="chEfeito"> <label class="custom-control-label"
-											for="chEfeito">Efeito Especial?</label>
+										<input name="EfeitoEspecial" value="null" type="checkbox"
+											class="custom-control-input" id="chEfeito"> <label
+											class="custom-control-label" for="chEfeito">Efeito
+											Especial?</label>
 									</div>
 									<div class="form-group" id="divEfeito" style="display: none">
-										<input name = "efeitoEspecial"   type="text" text="" class="form-control" id="inputEfeito"
+										<input name="efeitoEspecial" class="form-control" type="text"
 											placeholder="Nome do Efeito">
 									</div>
 
