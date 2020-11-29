@@ -22,5 +22,5 @@ public class ReceitasEspeciais extends Receitas implements Serializable {
 	private long id;
 	
 	@Column
-	@Getter @Setter protected String efeitoEspecial;
+	@Getter @Setter public String efeitoEspecial;
 }
