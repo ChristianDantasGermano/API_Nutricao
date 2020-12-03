@@ -66,3 +66,12 @@
 .grupo5{
 	margin: 4% 0 5% 5%;
 }
+
+.my-custom-scrollbar {
+position: relative;
+height: 500px;
+overflow: auto;
+}
+.table-wrapper-scroll-y {
+display: block;
+}

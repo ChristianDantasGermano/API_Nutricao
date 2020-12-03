@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+</head>
+<body>
+	<div th:fragment="cadastroReceitas">
+		<div class="row cadAlimentos">
+			<div class="col align-self-start">
+				<div class="card">
+					<form action="/addReceita" method="post"
+						modelAttribute="receitasForm">
+						<h5 class="card-header titulo">Cadastro de novas receitas</h5>
+						<div class="form-group alinha">
+							<input name="nome" type="text" class="form-control"
+								placeholder="Nome da receita">
+						</div>
+
+						<div class="form-group alinha" id="ingredientes_form">
+							<div class="input-group">
+								<input name="ingredientes[0].nomeIngrediente" type="text"
+									aria-label="Last name" class="form-control"
+									placeholder="Ingrediente"> <input
+									name="ingredientes[0].quantidade" type="number"
+									aria-label="Last name" class="form-control"
+									placeholder="Quantidade(g)">
+								<div class="input_fields_wrap" id="button_add">
+									<a id="button_add" href="#" class="dynamicButtons"><h5>+</h5></a>
+								</div>
+							</div>
+						</div>
+						<div class="input-group mb-3 alinha">
+							<input name="TempoPreparo" type="number" class="form-control"
+								placeholder="Tempo" aria-label="Recipient's username"
+								aria-describedby="basic-addon2">
+							<div class="input-group-append">
+								<span class="input-group-text" id="basic-addon2">Minutos</span>
+							</div>
+						</div>
+						<div class="form-group alinha">
+							<textarea name="ComoPreparar" class="form-control"
+								id="exampleFormControlTextarea1"
+								placeholder="Detalhes sobre o preparo da receita"></textarea>
+								
+							<div class="d-flex flex-row efeitoespecial">
+								<div class="p-2 custom-control custom-checkbox">
+									<input value="null" type="checkbox"
+										class="custom-control-input" id="chEfeito"> <label
+										class="custom-control-label" for="chEfeito">Efeito
+										Especial?</label>
+								</div>
+							</div>
+							<div class="form-group" id="divEfeito" style="display: none">
+								<input name="efeitoEspecial" class="form-control" type="text"
+									placeholder="Efeito">
+							</div>
+						</div>
+						<div th:replace="fragments/tabnutricional :: cadTabNutricao">
+						</div>
+						<div class="submit">
+							<button type="submit" class="btn btn-primary btn-block">Cadastrar</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

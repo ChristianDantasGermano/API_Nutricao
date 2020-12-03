@@ -25,55 +25,7 @@
 								<option>Grupo Alimentar 5</option>
 							</select>
 						</div>
-						<h5 class="card-title">Tabela Nutricional</h5>
-						<div class="form-group alinha">
-							<input name="valorEnergetico" type="number" class="form-control"
-								placeholder="Valor Energético">
-						</div>
-						<div class="form-group alinha">
-							<input name="carboidratos" type="number" class="form-control"
-								placeholder="Carboidratos">
-						</div>
-						<div class="form-group alinha">
-							<input name="proteinas" type="number" class="form-control"
-								placeholder="Proteínas">
-						</div>
-						<div class="form-group alinha">
-							<input name="gordurasSaturadas" type="number"
-								class="form-control" placeholder="Gorduras Saturadas">
-						</div>
-						<div class="form-group alinha">
-							<input name="gordurasTrans" type="number" class="form-control"
-								placeholder="Gorduras Trans">
-						</div>
-						<div class="form-group alinha">
-							<input name="fibraAlimentar" type="number" class="form-control"
-								placeholder="Fibra Alimentar">
-						</div>
-						<div class="form-group alinha">
-							<input name="sodio" type="number" class="form-control"
-								placeholder="Sódio">
-						</div>
-						<div class="form-group alinha" id="input_minerais">
-							<div class="input-group">
-								<input name="minerios[0].nomeMinerio" type="text"
-									aria-label="Mineral" class="form-control" placeholder="Mineral">
-								<input name="minerios[0].quantidade" type="number"
-									aria-label="Quantidade" class="form-control"
-									placeholder="Quantidade de minerais"> <a
-									id="add_minerais_button" href="#" class="dynamicButtons"><h5>+</h5></a>
-							</div>
-						</div>
-						<div class="form-group alinha" id="input_vitamina">
-							<div class="input-group">
-								<input name="vitaminas[0].nomeVitamina" type="text"
-									aria-label="Mineral" class="form-control"
-									placeholder="Vitamina"> <input
-									name="vitaminas[0].quantidade" type="number"
-									aria-label="Quantidade" class="form-control"
-									placeholder="Quantidade de vitaminas"> <a
-									id="add_vitamina_button" href="#" class="dynamicButtons"><h5>+</h5></a>
-							</div>
+						<div th:replace="fragments/tabnutricional :: cadTabNutricao">							
 						</div>
 						<div class="submit">
 							<button type="submit" class="btn btn-primary btn-block">Cadastrar</button>

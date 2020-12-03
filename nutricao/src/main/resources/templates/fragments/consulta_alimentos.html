@@ -8,114 +8,32 @@
 		<div class="col align-self-start">
 			<div class="card">
 				<div class="table-responsive">
-					<table class="table table-hover">
-						<thead>
-							<tr>
-								<th scope="col">Nome</th>
-								<th scope="col">Grupo de alimento</th>
-								<th scope="col">Tabela Nutricional</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr th:each="elemento:${elementos}">
-								<th th:text="${elemento.nome}" scope="row"></th>
-								<td th:text="${elemento.grupoAlimentos}"></td>
-								<td><a class="btn btn-primary"
-									th:href="@{/alimentos/{id}(id=${elemento.id})}" role="button">Mostrar</a></td>
-							</tr>							
-						</tbody>
-					</table>
+					<div class="table-wrapper-scroll-y my-custom-scrollbar">
+						<table class="table table-bordered table-striped mb-0">
+							<thead>
+								<tr>
+									<th scope="col">Nome</th>
+									<th scope="col">Grupo de alimento</th>
+									<th scope="col">Tabela Nutricional</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="elemento:${elementos}">
+									<th th:text="${elemento.nome}" scope="row"></th>
+									<td th:text="${elemento.grupoAlimentos}"></td>
+									<td><a class="btn btn-primary"
+										th:href="@{/alimentos/{id}(id=${elemento.id})}" role="button">Mostrar</a></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
 				</div>
 			</div>
 		</div>
 		<div class="col align-self-start">
 			<div class="card nutricao">
 				<h5 class="card-header titulo">Tabela Nutricional</h5>
-				<div class="row">
-					<div class="col-6">
-						<div class="form-group row alinha primeiro">
-							<label class="col-5" for="disabledTextInput">Valor
-								Energético</label>
-							<div class="col-6">
-								<input type="number" id="disabledTextInput" class="form-control"
-									th:placeholder="${alimentos.tabelaNutricional.valorEnergetico}"
-									disabled>
-							</div>
-						</div>
-						<div class="form-group row alinha">
-							<label class="col-5" for="disabledTextInput">Carboidratos</label>
-							<div class="col-6">
-								<input type="number" id="disabledTextInput" class="form-control"
-									th:placeholder="${alimentos.tabelaNutricional.carboidratos}"
-									disabled>
-							</div>
-						</div>
-						<div class="form-group row alinha">
-							<label class="col-5" for="disabledTextInput">Proteínas</label>
-							<div class="col-6">
-								<input type="number" id="disabledTextInput" class="form-control"
-									th:placeholder="${alimentos.tabelaNutricional.proteinas}"
-									disabled>
-							</div>
-						</div>
-						<div class="form-group  row alinha">
-							<label class="col-6" for="disabledTextInput">Gorduras
-								Saturadas</label>
-							<div class="col-5">
-								<input type="number" id="disabledTextInput" class="form-control"
-									th:placeholder="${alimentos.tabelaNutricional.gordurasSaturadas}"
-									disabled>
-							</div>
-						</div>
-						<div class="form-group row alinha">
-							<label class="col-5" for="disabledTextInput">Gorduras
-								Trans</label>
-							<div class="col-6">
-								<input type="number" id="disabledTextInput" class="form-control"
-									th:placeholder="${alimentos.tabelaNutricional.gordurasTrans}"
-									disabled>
-							</div>
-						</div>
-						<div class="form-group row alinha">
-							<label class="col-5" for="disabledTextInput">Fibra
-								Alimentar</label>
-							<div class="col-6">
-								<input type="number" id="disabledTextInput" class="form-control"
-									th:placeholder="${alimentos.tabelaNutricional.fibraAlimentar}"
-									disabled>
-							</div>
-						</div>
-						<div class="form-group row alinha">
-							<label class="col-5" for="disabledTextInput">Sódio</label>
-							<div class="col-6">
-								<input type="number" id="disabledTextInput" class="form-control"
-									th:placeholder="${alimentos.tabelaNutricional.sodio}" disabled>
-							</div>
-						</div>
-					</div>
-					<div class="col-6">
-						<h5>Minerais</h5>
-						<div th:each="minerio:${alimentos.tabelaNutricional.minerios}"
-							class="form-group row alinha">
-							<label class="col-3" th:text="${minerio.nomeMinerio}"
-								for="disabledTextInput"></label>
-							<div class="col-9">
-								<input type="number" id="disabledTextInput" class="form-control"
-									th:placeholder="${minerio.quantidade}" disabled>
-							</div>
-						</div>
-						<h5 class="segundo">Vitaminas</h5>
-						<div th:each="vitamina:${alimentos.tabelaNutricional.vitaminas}"
-							class="form-group row alinha">
-							<label class="col-3" th:text="${vitamina.nomeVitamina}"
-								for="disabledTextInput"></label>
-							<div class="col-9">
-								<input type="number" id="disabledTextInput" class="form-control"
-									th:placeholder="${vitamina.quantidade}" disabled>
-							</div>
-						</div>
-					</div>
-				</div>
+				<div th:replace="fragments/tabnutricional :: conTabNutricao"></div>
 			</div>
 		</div>
 	</div>

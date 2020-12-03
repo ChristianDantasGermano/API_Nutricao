@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+</head>
+<body>
+	<div class="form-row tabela" th:fragment="consultaReceitas">
+
+		<div class="col align-self-start">
+			<div class="card">
+				<div class="table-responsive">
+					<div class="table-wrapper-scroll-y my-custom-scrollbar">
+						<table class="table table-hover">
+							<thead>
+								<tr>
+									<th scope="col">Nome</th>
+									<th scope="col">Mostrar</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="elemento:${receitasElemento}">
+									<th th:text="${elemento.nome}" scope="row"></th>
+									<td><a class="btn btn-primary"
+										th:href="@{/receitas/{id}(id=${elemento.id})}" role="button">Mostrar</a></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col align-self-start">
+			<div class="card nutricao">
+				<h5 class="card-header titulo">Detalhes da Receita</h5>
+				<div class="row">
+					<div class="col">
+						<div class="form-group row alinha primeiro">
+							<label class="col-3" for="disabledTextInput">Como
+								preparar</label>
+							<div class="col-8">
+								<textarea id="disabledTextInput"
+									th:placeholder="${consulta.ComoPreparar}" class="form-control" rows="3"
+									disabled></textarea>
+							</div>
+						</div>
+						<div class="form-group row alinha">
+							<label class="col-3" for="disabledTextInput">TempoPreparo</label>
+							<div class="col-8">
+								<input type="number" id="disabledTextInput"
+									th:placeholder="${consulta.TempoPreparo}" class="form-control"
+									disabled>
+							</div>
+						</div>
+						<h5>Ingredientes</h5>
+						<div th:each="ingredientes:${consulta.ingredientes}"
+							class="form-group row alinha">
+							<label class="col-3" th:text="${ingredientes.nomeIngrediente}"
+								for="disabledTextInput"></label>
+							<div class="col-8">
+								<input type="number" id="disabledTextInput" class="form-control"
+									th:placeholder="${ingredientes.quantidade}" disabled>
+							</div>
+						</div>
+						<div th:if="${receitasEspecias?.efeitoEspecial}">
+							<h5>Efeito Especial</h5>
+							<div class="form-group row alinha">
+								<div class="col-12">
+									<input type="number" id="disabledTextInput"
+										th:placeholder="${receitasEspecias.efeitoEspecial}"
+										class="form-control" disabled>
+								</div>
+							</div>
+						</div>
+						<div>
+							<button class="btn btn-link" type="button" data-toggle="collapse"
+								data-target="#collapse" aria-expanded="true"
+								aria-controls="collapse">
+								<h5>Tabela nutricional</h5>
+							</button>
+							<br />
+							<div class="collapse" id="collapse">
+								<div th:replace="fragments/tabnutricional :: conTabNutricao">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

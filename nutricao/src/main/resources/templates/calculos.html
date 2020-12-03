@@ -7,48 +7,58 @@
 	rel="stylesheet">
 <script src="webjars/jquery/3.4.1/jquery.min.js"></script>
 <script src="webjars/bootstrap/4.5.3/js/bootstrap.min.js"></script>
-<title>Cálculos</title>
+<link rel="stylesheet" href="/calculo.css">
 </head>
 <body>
 	<div th:replace="fragments/header :: menu"></div>
-	<div class="row">
-		<div class="col-sm-6">
-			<div class="card" >
-				<div class="card-body">
-					<h5 class="card-title">Índice de Massa Corporal</h5>
-					<p class="card-text">Para calcular o seu IMC adicione seu peso e sua altura</p>
-					<form action="calculo" method="post">
-						<div class="form-group">
-							<input name="peso" type="text" class="form-control" id="peso" placeholder="Peso">
-						</div>
-						<div class="form-group">
-							<input name="altura" type="text" class="form-control" id="altura" placeholder="Altura">
-						</div>
-						<div class="form-group">
-							<button type="submit" class="btn btn-primary btn-sm">Calcular</button>
-						</div>
-						<input class="form-control" type="text" th:placeholder="${resultadoIMC}" disabled>
-					</form>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-sm-6">
+				<div class="card im">
+					<div class="card-body">
+						<h5 class="card-title">Índice de Massa Corporal</h5>
+						<p class="card-text">Para calcular o seu IMC adicione seu peso
+							e sua altura</p>
+						<form action="calculo" method="post">
+							<div class="form-group">
+								<input name="peso" type="text" class="form-control" isd="peso"
+									placeholder="Peso">
+							</div>
+							<div class="form-group">
+								<input name="altura" type="text" class="form-control"
+									id="altura" placeholder="Altura">
+							</div>
+							<div class="form-group">
+								<button type="submit" class="btn btn-primary btn-sm">Calcular</button>
+							</div>
+							<input class="form-control" type="text"
+								th:placeholder="${resultadoIMC}" disabled>
+						</form>
+					</div>
 				</div>
 			</div>
-		</div>
-		<div class="col-sm-6">
-			<div class="card">
-				<div class="card-body">
-					<h5 class="card-title">Percentual de Gordura Corporal</h5>
-					<p class="card-text">Para calcular o seu IMG adicione sua idade e seu sexo (Masculino = 1 / Feminino = 0 )</p>
-					<form action="calculoImg" method="post">
-						<div class="form-group">
-							<input name="idade" type="text" class="form-control" id="idade" placeholder="Idade">
-						</div>
-						<div class="form-group">
-							<input name="sexo" type="text" class="form-control" id="sexo" placeholder="Sexo">
-						</div>
-						<div class="form-group">
-							<button type="submit" class="btn btn-primary btn-sm">Calcular</button>
-						</div>
-						<input class="form-control" type="text" th:placeholder="${resultadoIMG}" disabled>
-					</form>
+			<div class="col-sm-6">
+				<div class="card im">
+					<div class="card-body">
+						<h5 class="card-title">Percentual de Gordura Corporal</h5>
+						<p class="card-text">Para calcular o seu IMG adicione sua
+							idade e seu sexo (Masculino = 1 / Feminino = 0 )</p>
+						<form action="calculoImg" method="post">
+							<div class="form-group">
+								<input name="idade" type="text" class="form-control" id="idade"
+									placeholder="Idade">
+							</div>
+							<div class="form-group">
+								<input name="sexo" type="text" class="form-control" id="sexo"
+									placeholder="Sexo">
+							</div>
+							<div class="form-group">
+								<button type="submit" class="btn btn-primary btn-sm">Calcular</button>
+							</div>
+							<input class="form-control" type="text"
+								th:placeholder="${resultadoIMG}" disabled>
+						</form>
+					</div>
 				</div>
 			</div>
 		</div>

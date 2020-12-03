@@ -12,18 +12,23 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
+import br.com.api.nutricao.modelo.alimentos.TabelaNutricional;
 import lombok.Getter;
 import lombok.Setter;
 
 @SuppressWarnings("serial")
+@Inheritance(strategy = InheritanceType.JOINED)
 @Entity
 public class Receitas implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Getter private long id;
+	@Getter protected long id;
 	
 	@Column()
 	@Getter @Setter protected String nome;
@@ -34,8 +39,12 @@ public class Receitas implements Serializable{
 
 	
 	@OneToMany(orphanRemoval = true,cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-	@JoinColumn(name = "Ingredientes")
-	@Getter @Setter private List<Ingrediente> ingredientes = new ArrayList<Ingrediente>();
+	@JoinColumn(name = "idReiceita")
+	@Getter @Setter protected List<Ingrediente> ingredientes = new ArrayList<Ingrediente>();
+	
+	@OneToOne(orphanRemoval = true,cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+	@JoinColumn(name = "idNutricional")
+	@Getter @Setter private TabelaNutricional tabelaNutricional;
 	
 }
 

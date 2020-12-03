@@ -9,11 +9,11 @@ $(document).ready(function() {
 		if (x < max_fields) { //max input box allowed
 			 //text box increment
 			
-			$(wrapper).append('<div class="input-group"> <input name = "ingrediente['+x+'].nomeIngrediente" type="text"'+
+			$(wrapper).append('<div class="input-group"> <input name = "ingredientes['+x+'].nomeIngrediente" type="text"'+
 			' aria-label="Last name" class="form-control" placeholder="Alimento">'+ 
 			'<input name = "ingredientes['+x+'].quantidade"  type="number" aria-label="Last name"'+
 			' class="form-control"'+
-			' placeholder = "Quantidade"><button class="remove_field">X</button></div>'); //add input box
+			' placeholder = "Quantidade"><a href="#" class="dynamicButtons remove_field"><h5 class="red">X</h5></a></div>'); //add input box
 			x++;
 		}
 	});

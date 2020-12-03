@@ -11,7 +11,7 @@ $(document).ready(function() {
 			'<input name="minerios['+x+'].nomeMinerio" type="text" aria-label="mineral"'+
 			'class="form-control" placeholder="Mineral">'+ 
 			'<input name="minerios['+x+'].quantidade" type="text"'+
-			'aria-label="quantidadeMin" class="form-control" placeholder="Quantidade de minerais">'+
+			'aria-label="quantidadeMin" class="form-control" placeholder="Quantidade(mg)">'+
 			'<a id="remove_field" href="#" class="dynamicButtons"><h5 class="red">X</h5></a>'+
 			'</div>'); //add input box
 			x++; //text box increment
@@ -36,7 +36,7 @@ $(document).ready(function() {
 			'<input name="vitaminas['+i+'].nomeVitamina" type="text" aria-label="vitaminas"'+
 			'class="form-control" placeholder="Vitamina">'+ 
 			'<input name="vitaminas['+i+'].quantidade" type="number"'+
-			'aria-label="quantidadeVit" class="form-control" placeholder="Quantidade de vitaminas">'+
+			'aria-label="quantidadeVit" class="form-control" placeholder="Quantidade(mg)">'+
 			'<a id="remove_field" href="#" class="dynamicButtons"><h5 class="red">X</h5></a>'+
 			'</div>'); //add input box
 			i++; //text box increment

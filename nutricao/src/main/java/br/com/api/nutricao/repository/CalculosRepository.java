@@ -10,17 +10,13 @@ public class CalculosRepository {
 	public double resultadoIMG = 0;
 	
 	public void salvarIMC(IMC obj) {
-		System.out.println("calr: " + obj);
 		resultadoIMC = obj.calcularIMC();
 		imc = obj;
-		System.out.println(resultadoIMC);
 	}
 	
 	public void salvarIMG(IMG obj) {
-		System.out.println("calr: " + obj);
 		resultadoIMG = obj.calcularIMG(resultadoIMC);
 		img = obj;
-		System.out.println(resultadoIMG);
 	}
 
 }

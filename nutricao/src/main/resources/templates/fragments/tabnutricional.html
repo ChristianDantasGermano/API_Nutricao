@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+</head>
+<body>
+	<div th:fragment="cadTabNutricao">
+		<h5 class="card-title">Tabela Nutricional</h5>
+		<div class="form-group alinha">
+			<input name="valorEnergetico" type="number" class="form-control"
+				placeholder="Valor Energético(kcal)">
+		</div>
+		<div class="form-group alinha">
+			<input name="carboidratos" type="number" class="form-control"
+				placeholder="Carboidratos(g)">
+		</div>
+		<div class="form-group alinha">
+			<input name="proteinas" type="number" class="form-control"
+				placeholder="Proteínas(g)">
+		</div>
+		<div class="form-group alinha">
+			<input name="gordurasSaturadas" type="number" class="form-control"
+				placeholder="Gorduras Saturadas(g)">
+		</div>
+		<div class="form-group alinha">
+			<input name="gordurasTrans" type="number" class="form-control"
+				placeholder="Gorduras Trans(g)">
+		</div>
+		<div class="form-group alinha">
+			<input name="fibraAlimentar" type="number" class="form-control"
+				placeholder="Fibra Alimentar(g)">
+		</div>
+		<div class="form-group alinha">
+			<input name="sodio" type="number" class="form-control"
+				placeholder="Sódio(mg)">
+		</div>
+		<div>
+			<div class="form-group alinha" id="input_minerais">
+				<div class="input-group">
+					<input name="minerios[0].nomeMinerio" type="text"
+						aria-label="Mineral" class="form-control" placeholder="Mineral">
+					<input name="minerios[0].quantidade" type="number"
+						aria-label="Quantidade" class="form-control"
+						placeholder="Quantidade(mg)"> <a
+						id="add_minerais_button" href="#" class="dynamicButtons"><h5>+</h5></a>
+				</div>
+			</div>
+		</div>
+		<div>
+			<div class="form-group alinha" id="input_vitamina">
+				<div class="input-group">
+					<input name="vitaminas[0].nomeVitamina" type="text"
+						aria-label="Mineral" class="form-control" placeholder="Vitamina">
+					<input name="vitaminas[0].quantidade" type="number"
+						aria-label="Quantidade" class="form-control"
+						placeholder="Quantidade(mg)"> <a
+						id="add_vitamina_button" href="#" class="dynamicButtons"><h5>+</h5></a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div th:fragment="conTabNutricao">
+		<div class="form-group row alinha primeiro">
+			<label class="col-3" for="disabledTextInput">Valor Energético</label>
+			<div class="col-8">
+				<input type="number" id="disabledTextInput" class="form-control"
+					th:placeholder="${consulta.tabelaNutricional.valorEnergetico}"
+					disabled>
+			</div>
+		</div>
+		<div class="form-group row alinha">
+			<label class="col-2" for="disabledTextInput">Carboidratos</label>
+			<div class="col-9">
+				<input type="number" id="disabledTextInput" class="form-control"
+					th:placeholder="${consulta.tabelaNutricional.carboidratos}"
+					disabled>
+			</div>
+		</div>
+		<div class="form-group row alinha">
+			<label class="col-2" for="disabledTextInput">Proteínas</label>
+			<div class="col-9">
+				<input type="number" id="disabledTextInput" class="form-control"
+					th:placeholder="${consulta.tabelaNutricional.proteinas}" disabled>
+			</div>
+		</div>
+		<div class="form-group  row alinha">
+			<label class="col-3" for="disabledTextInput">Gorduras
+				Saturadas</label>
+			<div class="col-8">
+				<input type="number" id="disabledTextInput" class="form-control"
+					th:placeholder="${consulta.tabelaNutricional.gordurasSaturadas}"
+					disabled>
+			</div>
+		</div>
+		<div class="form-group row alinha">
+			<label class="col-2" for="disabledTextInput">Gorduras Trans</label>
+			<div class="col-9">
+				<input type="number" id="disabledTextInput" class="form-control"
+					th:placeholder="${consulta.tabelaNutricional.gordurasTrans}"
+					disabled>
+			</div>
+		</div>
+		<div class="form-group row alinha">
+			<label class="col-2" for="disabledTextInput">Fibra Alimentar</label>
+			<div class="col-9">
+				<input type="number" id="disabledTextInput" class="form-control"
+					th:placeholder="${consulta.tabelaNutricional.fibraAlimentar}"
+					disabled>
+			</div>
+		</div>
+		<div class="form-group row alinha">
+			<label class="col-2" for="disabledTextInput">Sódio</label>
+			<div class="col-9">
+				<input type="number" id="disabledTextInput" class="form-control"
+					th:placeholder="${consulta.tabelaNutricional.sodio}" disabled>
+			</div>
+		</div>
+		<div th:if="${consulta.tabelaNutricional.minerios[0].nomeMinerio != ''}">
+			<h5>Minerais</h5>
+			<div th:each="minerio:${consulta.tabelaNutricional.minerios}"
+				class="form-group row alinha">
+				<label class="col-2" th:text="${minerio.nomeMinerio}"
+					for="disabledTextInput"></label>
+				<div class="col-9">
+					<input type="number" id="disabledTextInput" class="form-control"
+						th:placeholder="${minerio.quantidade}" disabled>
+				</div>
+			</div>
+		</div>
+		<div
+			th:if="${consulta.tabelaNutricional.vitaminas[0].nomeVitamina != '' }">
+			<h5 class="segundo">Vitaminas</h5>
+			<div th:each="vitamina:${consulta.tabelaNutricional.vitaminas}"
+				class="form-group row alinha">
+				<label class="col-2" th:text="${vitamina.nomeVitamina}"
+					for="disabledTextInput"></label>
+				<div class="col-9">
+					<input type="number" id="disabledTextInput" class="form-control"
+						th:placeholder="${vitamina.quantidade}" disabled>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

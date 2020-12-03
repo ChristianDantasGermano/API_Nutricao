@@ -3,173 +3,40 @@
 <head>
 <!-- Required meta tags -->
 <meta charset="utf-8">
-<link href="webjars/bootstrap/4.5.3/css/bootstrap.min.css"
+<link href="../webjars/bootstrap/4.5.3/css/bootstrap.min.css"
 	rel="stylesheet">
-<script src="webjars/jquery/3.4.1/jquery.min.js"></script>
-<script src="webjars/bootstrap/4.5.3/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="/receita.js"></script>
-
-
+<script src="../webjars/jquery/3.4.1/jquery.min.js"></script>
+<script src="../webjars/bootstrap/4.5.3/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../receita.js"></script>
+<script type="text/javascript" src="../alimentos.js"></script>
+<link rel="stylesheet" href="../alimentos.css">
+<link rel="stylesheet" href="../receitas.css">
 <title>Receitas</title>
 </head>
 <body>
 	<div th:replace="fragments/header :: menu"></div>
 	<div class="container-fluid">
-		<ul class="nav nav-tabs" id="myTab" role="tablist">
-			<li class="nav-item" role="presentation"><a
-				class="nav-link active" id="home-tab" data-toggle="tab" href="#home"
-				role="tab" aria-controls="home" aria-selected="true">Receitas</a></li>
-			<li class="nav-item" role="presentation"><a class="nav-link"
-				id="profile-tab" data-toggle="tab" href="#profile" role="tab"
-				aria-controls="profile" aria-selected="false">Cadastro</a></li>
-
-		</ul>
-
-
-		<div class="tab-content" id="myTabContent">
-			<div class="tab-pane fade show active" id="home" role="tabpanel"
-				aria-labelledby="home-tab">
-				<div class="form-row tabela" th:fragment="consultaReceitas">
-
-					<div class="col align-self-start">
-						<div class="card">
-							<div class="table-responsive">
-								<table class="table table-hover">
-									<thead>
-										<tr>
-											<th scope="col">Nome da Receita</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr th:each="elemento:${receitasElemento}">
-											<th th:text="${elemento.nome}" scope="row"></th>
-											<td><a class="btn btn-primary"
-												th:href="@{/receitas/{id}(id=${elemento.id})}" role="button">Mostrar</a></td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
-						</div>
-					</div>
-					<div class="col align-self-start">
-						<div class="card nutricao">
-							<h5 class="card-header titulo">Detalhes da Receita</h5>
-							<div class="row">
-								<div class="col-6">
-									<div class="form-group row alinha primeiro">
-										<label class="col-5" for="disabledTextInput">Como
-											preparar</label>
-										<div class="col-6">
-											<input type="text" id="disabledTextInput"
-												class="form-control"
-												th:placeholder="${receita.ComoPreparar}" disabled>
-										</div>
-									</div>
-									<div class="form-group row alinha">
-										<label class="col-5" for="disabledTextInput">TempoPreparo</label>
-										<div class="col-6">
-											<input type="number" id="disabledTextInput"
-												class="form-control"
-												th:placeholder="${receita.TempoPreparo}" disabled>
-										</div>
-									</div>
-									<div class="form-group row alinha">
-										<label class="col-5" for="disabledTextInput">Efeito
-											Especial</label>
-										<div class="col-6">
-											<input type="text" id="disabledTextInput"
-												class="form-control"
-												th:placeholder="${receitasElemento.efeitoEspecial}" disabled>
-										</div>
-									</div>
-
-								</div>
-								<div class="col-6">
-									<h5>Ingredientes</h5>
-									<div th:each="ingrediente:${receita.ingredientes}"
-										class="form-group row alinha">
-										<label class="col-3" th:text="${ingredientes.nomeIngrediente}"
-											for="disabledTextInput"></label>
-										<div class="col-9">
-											<input type="number" id="disabledTextInput"
-												class="form-control"
-												th:placeholder="${ingredientes.quantidade}" disabled>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
+		<div class="card text-center">
+			<div class="card-header">
+				<ul class="nav nav-tabs card-header-tabs">
+					<li class="nav-item"><a class="nav-link active" id="home-tab"
+						data-toggle="tab" href="#home" role="tab" aria-controls="home"
+						aria-selected="true"> Receitas</a></li>
+					<li class="nav-item "><a class="nav-link " id="profile-tab"
+						data-toggle="tab" href="#profile" role="tab"
+						aria-controls="profile" aria-selected="false"> Cadastro</a></li>
+				</ul>
+			</div>
+			<div class="tab-content" id="myTabContent">
+				<div class="tab-pane fade show active" id="home" role="tabpanel"
+					aria-labelledby="home-tab">
+					<div th:replace="fragments/consulta_receitas :: consultaReceitas"></div>
+				</div>
+				<div class="tab-pane fade" id="profile" role="tabpanel"
+					aria-labelledby="profile-tab">
+					<div th:replace="fragments/cadastro_receitas :: cadastroReceitas"></div>
 				</div>
 			</div>
-
-			<div class="tab-pane fade" id="profile" role="tabpanel"
-				aria-labelledby="profile-tab">
-				<form action="/addReceita" method="post"
-					modelAttribute="receitasForm">
-					<div class="form-row">
-						<div class="col-sm-6">
-							<div class="card-body">
-								<h5 class="card-title">Receita</h5>
-								<div class="form-group">
-									<input name="nome" type="text" class="form-control"
-										placeholder="Nome da receita">
-								</div>
-								<h5 class="card-title">Ingredientes</h5>
-								<div class="form-group" id="ingredientes_form">
-									<div class="input-group">
-										<input name="ingrediente[0].nomeIngrediente" type="text"
-											aria-label="Last name" class="form-control"
-											placeholder="Alimento"> <input
-											name="ingrediente[0].quantidade" type="number"
-											aria-label="Last name" class="form-control"
-											placeholder="Quantidade">
-										<div class="input_fields_wrap" id="button_add">
-											<button class="add_field_button">+</button>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-sm-6">
-							<div class="card-body">
-								<h5 class="card-title">Preparo</h5>
-								<div class="input-group mb-3">
-
-									<input name="TempoPreparo" type="number" class="form-control"
-										placeholder="Tempo" aria-label="Recipient's username"
-										aria-describedby="basic-addon2">
-									<div class="input-group-append">
-										<span class="input-group-text" id="basic-addon2">Minutos</span>
-									</div>
-								</div>
-								<div class="form-group">
-									<label for="exampleFormControlTextarea1">Modo de
-										Preparo</label> <input name="ComoPreparar" class="form-control"
-										type="text" id="exampleFormControlTextarea1"
-										placeholder="Detalhes sobre o preparo da receita">
-
-									<div class="custom-control custom-checkbox">
-										<input name="EfeitoEspecial" value="null" type="checkbox"
-											class="custom-control-input" id="chEfeito"> <label
-											class="custom-control-label" for="chEfeito">Efeito
-											Especial?</label>
-									</div>
-									<div class="form-group" id="divEfeito" style="display: none">
-										<input name="efeitoEspecial" class="form-control" type="text"
-											placeholder="Nome do Efeito">
-									</div>
-
-								</div>
-
-							</div>
-						</div>
-						<button type="submit" class="btn btn-primary submit">Cadastrar</button>
-					</div>
-				</form>
-			</div>
-			<div class="tab-pane fade" id="contact" role="tabpanel"
-				aria-labelledby="contact-tab">...</div>
 		</div>
 	</div>
 </body>
